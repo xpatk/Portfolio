@@ -75,7 +75,7 @@ const ProfileSection = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="col-span-4 place-self-center mt-10 lg:mt-0"
+          className="hidden lg:block col-span-4 place-self-center mt-10 lg:mt-0"
         >
           <div className="relative">
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-500/30 via-cyan-500/20 to-violet-500/30 blur-3xl" />
