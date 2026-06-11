@@ -11,7 +11,7 @@
   "dependencies": {
     "@heroicons/react": "^2.1.5",
     "firebase": "^10.14.1",
-    "framer-motion": "^11.11.7",
+    "framer-motion": "^12.40.0",
     "next": "^16.2.9",
     "react": "^19.2.7",
     "react-animated-numbers": "^0.18.0",

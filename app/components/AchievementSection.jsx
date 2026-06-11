@@ -1,64 +1,49 @@
 "use client";
-import React from "react";
-import dynamic from "next/dynamic";
 
-const AnimatedNumbers = dynamic(
-  () => {
-    return import("react-animated-numbers");
-  },
-  { ssr: false }
-);
-
-const achievementsList = [
-  {
-    metric: "Projets menés du début à la fin",
-    value: "100",
-    postfix: "%",
-  },
-  {
-    metric: "Full-stack",
-    value: "100",
-    postfix: "%",
-  },
-  {
-    metric: "Contactez-moi en français, anglais ou polonais",
-    value: "3",
-  },
+const skills = [
+  "Backend Development",
+  "Java",
+  "Spring Boot",
+  "REST APIs",
+  "SQL",
+  "Microservices",
+  "CI/CD",
+  "GitHub Actions",
+  "Web Development",
 ];
 
-const AchievementSection = () => {
+export default function AchievementSection() {
   return (
-    <div className="py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
-      <div className="sm:border-[#33353F] sm:border rounded-md py-8 px-16 flex flex-col sm:flex-row items-center justify-between">
-        {achievementsList.map((achievement, index) => {
-          return (
+    <section className="py-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-6">
+          {skills.map((skill) => (
             <div
-              key={index}
-              className="flex flex-col items-center justify-center mx-4 my-4 sm:my-0"
+              key={skill}
+              className="
+                rounded-full
+                border
+                border-sky-500/20
+                bg-white/[0.03]
+                backdrop-blur-md
+                px-6
+                py-3
+                text-gray-300
+                text-sm
+                md:text-base
+                transition-all
+                duration-300
+                hover:border-sky-400
+                hover:text-white
+                hover:bg-white/[0.06]
+                hover:-translate-y-1
+              "
             >
-              <h2 className="text-white text-4xl font-bold flex flex-row">
-                <AnimatedNumbers
-                  includeComma
-                  animateToNumber={parseInt(achievement.value)}
-                  locale="fr-FR"
-                  className="text-white text-4xl font-bold"
-                  configs={(_, index) => {
-                    return {
-                      mass: 1,
-                      friction: 100,
-                      tensions: 140 * (index + 1),
-                    };
-                  }}
-                />
-                {achievement.postfix}
-              </h2>
-              <p className="text-[#ADB7BE] text-base">{achievement.metric}</p>
+              {skill}
             </div>
-          );
-        })}
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default AchievementSection;
+}

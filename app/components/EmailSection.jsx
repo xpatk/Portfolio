@@ -1,13 +1,13 @@
 "use client";
+
 import React, { useState, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import ReCAPTCHA from "react-google-recaptcha";
-import GithubIcon from "../../public/icons/icons8-github-24.png";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
   const [captchaError, setCaptchaError] = useState(false);
+
   const recaptchaRef = useRef(null);
 
   const handleSubmit = async (e) => {
@@ -15,11 +15,14 @@ const EmailSection = () => {
 
     try {
       const token = await recaptchaRef.current.execute();
+
       if (!token) throw new Error();
 
       const response = await fetch("/api/send", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           email: e.target.email.value,
           subject: e.target.subject.value,
@@ -41,79 +44,196 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="grid md:grid-cols-2 my-12 py-24 gap-4 relative"
+      className="grid lg:grid-cols-2 gap-12 py-32 items-center"
     >
-      <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-900 to-transparent rounded-full h-80 w-80 absolute top-3/4 -left-4 blur-lg"></div>
+      {/* LEFT SIDE */}
       <div>
-        <h5 className="text-xl font-bold text-white my-2">Contactez-moi</h5>
-        <p className="text-[#ADB7BE] mb-4">
-          Toujours à la recherche de nouvelles opportunités. Mon inbox est
-          ouverte ! Que vous ayez une question ou une idée, je vous répondrai au
-          plus vite.
+        <span className="text-sky-400 uppercase tracking-[0.3em] text-sm">
+          Contact
+        </span>
+
+        <h2 className="text-4xl lg:text-6xl font-bold text-white mt-4 leading-tight">
+          Parlons de votre projet.
+        </h2>
+
+        <p className="text-gray-400 text-lg mt-6 leading-relaxed max-w-lg">
+          Vous avez une idée, une opportunité ou simplement envie d’échanger ?
+          Je suis toujours ouverte aux nouvelles collaborations autour du
+          développement logiciel, des applications web et des technologies Java.
         </p>
-        <div className="socials flex flex-row gap-2">
-          <Link href="https://github.com">
-            <Image src={GithubIcon} alt="Github Icon" />
-          </Link>
+
+        <div className="flex flex-wrap gap-4 mt-10">
+          <a
+            href="https://github.com/xpatk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              px-6
+              py-3
+              rounded-full
+              border
+              border-white/10
+              bg-white/5
+              text-white
+              hover:border-sky-500/40
+              hover:bg-white/10
+              transition-all
+              duration-300
+            "
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            href="mailto:votre@email.com"
+            className="
+              px-6
+              py-3
+              rounded-full
+              border
+              border-white/10
+              bg-white/5
+              text-white
+              hover:border-sky-500/40
+              hover:bg-white/10
+              transition-all
+              duration-300
+            "
+          >
+            Email
+          </a>
         </div>
       </div>
-      <div>
+
+      {/* RIGHT SIDE */}
+      <div
+        className="
+          rounded-3xl
+          border
+          border-white/10
+          bg-white/[0.03]
+          backdrop-blur-md
+          p-8
+          lg:p-10
+        "
+      >
         {emailSubmitted ? (
-          <p className="text-green-700 text-sm mt-2">Message envoyé!</p>
+          <div className="text-center py-12">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Message envoyé ✓
+            </h3>
+
+            <p className="text-gray-400">
+              Merci pour votre message. Je vous répondrai dès que possible.
+            </p>
+          </div>
         ) : (
-          <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
+          <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+            <div>
               <label
                 htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
+                className="block text-sm text-gray-300 mb-2"
               >
-                Your email
+                Email
               </label>
+
               <input
                 name="email"
                 type="email"
                 id="email"
                 required
-                className="bg-[#18191E] border border-[#33353F] text-gray-100 text-sm rounded-lg p-2.5 w-full"
-                placeholder="jean@google.fr"
+                placeholder="jean@email.fr"
+                className="
+                  w-full
+                  rounded-xl
+                  border
+                  border-white/10
+                  bg-white/[0.03]
+                  px-4
+                  py-3
+                  text-white
+                  placeholder:text-gray-500
+                  focus:outline-none
+                  focus:border-sky-500/50
+                "
               />
             </div>
-            <div className="mb-6">
+
+            <div>
               <label
                 htmlFor="subject"
-                className="text-white block text-sm mb-2 font-medium"
+                className="block text-sm text-gray-300 mb-2"
               >
                 Sujet
               </label>
+
               <input
                 name="subject"
                 type="text"
                 id="subject"
                 required
-                className="bg-[#18191E] border border-[#33353F] text-gray-100 text-sm rounded-lg p-2.5 w-full"
+                className="
+                  w-full
+                  rounded-xl
+                  border
+                  border-white/10
+                  bg-white/[0.03]
+                  px-4
+                  py-3
+                  text-white
+                  focus:outline-none
+                  focus:border-sky-500/50
+                "
               />
             </div>
-            <div className="mb-6">
+
+            <div>
               <label
                 htmlFor="message"
-                className="text-white block text-sm mb-2 font-medium"
+                className="block text-sm text-gray-300 mb-2"
               >
                 Message
               </label>
+
               <textarea
                 name="message"
                 id="message"
+                rows={6}
                 required
-                className="bg-[#18191E] border border-[#33353F] text-gray-100 text-sm rounded-lg p-2.5 w-full"
-                placeholder="Votre message"
+                placeholder="Votre message..."
+                className="
+                  w-full
+                  rounded-xl
+                  border
+                  border-white/10
+                  bg-white/[0.03]
+                  px-4
+                  py-3
+                  text-white
+                  placeholder:text-gray-500
+                  focus:outline-none
+                  focus:border-sky-500/50
+                "
               />
             </div>
 
             <button
               type="submit"
-              className="z-10 bg-sky-700 hover:bg-sky-900 text-white font-medium py-2.5 px-5 rounded-lg w-full relative"
+              className="
+                mt-2
+                rounded-xl
+                py-4
+                font-medium
+                text-white
+                bg-gradient-to-r
+                from-sky-500
+                to-cyan-500
+                hover:scale-[1.02]
+                transition-all
+                duration-300
+              "
             >
-              Envoyer
+              Envoyer le message
             </button>
 
             <ReCAPTCHA
@@ -122,8 +242,9 @@ const EmailSection = () => {
               size="invisible"
               badge="inline"
             />
+
             {captchaError && (
-              <p className="text-red-600 text-sm mt-2">
+              <p className="text-red-500 text-sm">
                 Veuillez vérifier le reCAPTCHA.
               </p>
             )}

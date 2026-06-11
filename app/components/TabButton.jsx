@@ -1,24 +1,62 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 
-const variants = {
-  default: { width: 0 },
-  active: { width: "calc(100% - 0.75rem)" },
-};
-
 const TabButton = ({ active, selectTab, children }) => {
-  const buttonClasses = active ? "text-white" : "text-[#ADB7BE]";
   return (
-    <button onClick={selectTab}>
-      <p className={`mr-3 font-semibold hover:text-white ${buttonClasses}`}>
-        {children}
-      </p>
+    <button
+      onClick={selectTab}
+      className="relative"
+    >
       <motion.div
-        initial="default"
-        animate={active ? "active" : "default"}
-        variants={variants}
-        className="h-1 bg-sky-400 mt-2 mr-3"
-      ></motion.div>
+        animate={{
+          backgroundColor: active
+            ? "rgba(255,255,255,0.08)"
+            : "rgba(255,255,255,0)",
+          borderColor: active
+            ? "rgba(56,189,248,0.4)"
+            : "rgba(255,255,255,0.08)",
+        }}
+        transition={{ duration: 0.25 }}
+        className="
+          px-5
+          py-2.5
+          rounded-full
+          border
+          backdrop-blur-md
+        "
+      >
+        <span
+          className={`
+            text-sm
+            font-medium
+            transition-colors
+            ${
+              active
+                ? "text-white"
+                : "text-gray-400"
+            }
+          `}
+        >
+          {children}
+        </span>
+      </motion.div>
+
+      {active && (
+        <motion.div
+          layoutId="active-pill"
+          className="
+            absolute
+            inset-0
+            rounded-full
+            border
+            border-sky-400/20
+            shadow-[0_0_20px_rgba(56,189,248,0.2)]
+            pointer-events-none
+          "
+        />
+      )}
     </button>
   );
 };

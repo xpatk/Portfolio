@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
@@ -7,80 +8,87 @@ import Link from "next/link";
 
 const ProfileSection = () => {
   return (
-    <section className="lg:py-16">
-      <div className="grid grid-cols-1 sm:grid-cols-12">
+    <section className="lg:py-16 min-h-[80vh] flex items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 w-full">
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="col-span-8 place-self-center text-center sm:text-left justify-self-start"
         >
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-7xl  font-extrabold">
-            <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 via-sky-700 to-gray-900">
-              Hello, je suis{""}
+          <h1 className="text-white mb-6 font-extrabold">
+            <div className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-sky-400 to-cyan-300 text-4xl sm:text-5xl lg:text-6xl">
+              Hello, je suis
             </div>
-            <div className="inline-block min-h-0 sm:min-h-[1.4em]">
+
+            <div className="mt-2 text-5xl sm:text-6xl lg:text-7xl">
+              Patrycja Kruczyńska
+            </div>
+
+            <div className="text-sky-400 text-2xl sm:text-3xl lg:text-4xl mt-6 min-h-[60px]">
               <TypeAnimation
                 sequence={[
-                  "Patrycja",
-                  1000,
-                  "Dev",
-                  1000,
-                  // "Java Developer",
-                  // 1000,
-                  "Graphiste",
-                  1000,
+                  "Software Engineer",
+                  2000,
+                  "Web Developer",
+                  2000,
+                  "Problem Solver",
+                  2000,
+                  "Tech Enthusiast",
+                  2000,
+                  "Tolkien Fan",
+                  2000,
                 ]}
                 wrapper="span"
                 speed={50}
-                style={{ fontSize: "1.2em", display: "inline-block" }}
                 repeat={Infinity}
-                bg-gradient-to-r
-                from-gray-700
-                via-rose-500
-                to-orange-400
               />
             </div>
           </h1>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            Je me spécialise dans la création d&rsquo;applications web
-            dynamiques et réactives, offrant une expérience utilisateur fluide.
-            Avec une expertise en front-end et back-end, je transforme les idées
-            en solutions digitales fonctionnelles. Mon objectif&nbsp;?
-            Développer des logiciels innovants, évolutifs et performants.
+
+          <p className="text-[#ADB7BE] text-base sm:text-lg lg:text-xl max-w-2xl leading-relaxed mb-8">
+            Je conçois des solutions logicielles et crée également des sites
+            web modernes. J'aime transformer des idées en produits fiables,
+            élégants et utiles, tout en combinant ingénierie, créativité et
+            résolution de problèmes.
           </p>
 
-          <div>
-            <Link href="#contact" passHref>
-              <button className="px-6 py-3 w-full sm:w-fit rounded-full mr-4 bg-sky-700 hover:bg-slate-800 text-white">
+          <div className="flex flex-wrap gap-4 justify-center sm:justify-start">
+            <Link href="#contact">
+              <button className="px-6 py-3 rounded-full bg-sky-700 hover:bg-sky-600 text-white transition-all duration-300">
                 Contactez-moi
               </button>
             </Link>
-            <button className="px-1 py-1 w-full sm:w-fit rounded-full bg-sky-700 hover:bg-sky-800 text-white mt-3">
-              <a
-                href="PKruczynska_CV.pdf"
-                download
-                className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2"
-              >
-                Téléchargez le CV
-              </a>
-            </button>
+
+            <a
+              href="https://github.com/xpatk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-full border border-white/20 text-white hover:border-sky-400 transition-all duration-300"
+            >
+              GitHub ↗
+            </a>
           </div>
         </motion.div>
+
         <motion.div
-          initial={{ opacity: 0, scale: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-4 lg:ml-10 mt-10 lg:mt-4 place-self-center"
+          transition={{ duration: 0.6 }}
+          className="col-span-4 place-self-center mt-10 lg:mt-0"
         >
-          <div className="rounded-full bg-[#121212] w-[310px] h-[310px] relative">
-            <Image
-              src="/images/profile-circle.webp"
-              alt="image of a girl working on a computer anime style"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-              width={300}
-              height={300}
-            />
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-sky-500/30 via-cyan-500/20 to-violet-500/30 blur-3xl" />
+
+            <div className="relative rounded-full overflow-hidden border border-white/10 backdrop-blur-sm">
+              <Image
+                src="/images/profile-circle.webp"
+                alt="Profile picture"
+                width={350}
+                height={350}
+                className="object-cover"
+              />
+            </div>
           </div>
         </motion.div>
       </div>
