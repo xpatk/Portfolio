@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const ProfileSection = () => {
   return (
-    <section className="lg:py-16 min-h-[80vh] flex items-center">
+    <section className="py-12 lg:py-16 min-h-[70vh] lg:min-h-[80vh] flex items-center">
       <div className="grid grid-cols-1 sm:grid-cols-12 gap-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -21,7 +21,7 @@ const ProfileSection = () => {
               Hello, je suis
             </div>
 
-            <div className="mt-2 text-5xl sm:text-6xl lg:text-7xl">
+            <div className="mt-2 text-4xl sm:text-6xl lg:text-7xl">
               Patrycja Kruczyńska
             </div>
 
