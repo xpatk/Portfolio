@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -12,6 +13,20 @@ const Footer = () => {
           alt="logo"
           className="h-auto w-auto opacity-80"
         />
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm text-slate-400">
+
+  <Link href="/mentions-legales">Mentions légales</Link>
+
+  <span className="hidden sm:block">•</span>
+
+  <Link href="/politique-confidentialite">
+
+    Politique de confidentialité
+
+  </Link>
+
+</div>
 
         <p className="text-sm text-slate-400">
           © {new Date().getFullYear()} Patrycja Kruczyńska

@@ -82,7 +82,7 @@ const ProfileSection = () => {
 
             <div className="relative rounded-full overflow-hidden border border-white/10 backdrop-blur-sm">
               <Image
-                src="/images/profile-circle.webp"
+                src="/images/prof.jpg"
                 alt="Profile picture"
                 width={350}
                 height={350}
