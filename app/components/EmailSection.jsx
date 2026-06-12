@@ -44,7 +44,7 @@ const EmailSection = () => {
   return (
     <section
       id="contact"
-      className="grid lg:grid-cols-2 gap-12 py-32 items-center"
+      className="grid lg:grid-cols-2 gap-12 py-18 lg:py-20 items-center"
     >
       {/* LEFT SIDE */}
       <div>
@@ -62,7 +62,7 @@ const EmailSection = () => {
           développement logiciel, des applications web et des technologies Java.
         </p>
 
-        <div className="flex flex-wrap gap-4 mt-10">
+        <div className="flex flex-wrap gap-4 mt-6 lg:mt-10">
           <a
             href="https://github.com/xpatk"
             target="_blank"

@@ -3,18 +3,18 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="footer z-10 border border-t-[#33353F] border-l-transparent border-r-transparent text-white">
-      <div className="container p-6 flex justify-between items-center">
+    <footer className="border-t border-white/10">
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <Image
           src="/icons/LOGO.png"
-          height={80}
-          width={80}
+          width={40}
+          height={40}
           alt="logo"
-          className="h-auto w-auto"
+          className="h-auto w-auto opacity-80"
         />
 
-        <p className="text-slate-300">
-          &copy; {new Date().getFullYear()} All rights reserved
+        <p className="text-sm text-slate-400">
+          © {new Date().getFullYear()} Patrycja Kruczyńska
         </p>
       </div>
     </footer>
