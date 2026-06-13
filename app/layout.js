@@ -13,8 +13,8 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Patrycja Kruczynska Web Dev",
-  description: "Mon portfolio developpeur",
+  title: "Patrycja Kruczynska software engineer",
+  description: "About me page",
 };
 
 export default function RootLayout({ children }) {

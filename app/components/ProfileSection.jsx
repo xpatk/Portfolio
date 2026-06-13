@@ -32,8 +32,6 @@ const ProfileSection = () => {
                   2000,
                   "Web Developer",
                   2000,
-                  "Problem Solver",
-                  2000,
                   "Tech Enthusiast",
                   2000,
                   "Tolkien Fan",
